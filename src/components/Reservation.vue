@@ -49,18 +49,13 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.$store.dispatch("add", values);
+          this.$store.dispatch("updateTime", values);
           console.log("Received values of form: ", values);
         }
       });
     },
     handleCancel(e) {
-      e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
           this.form.resetFields();
-        }
-      });
     }
   }
 };

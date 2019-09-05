@@ -27,31 +27,12 @@ title: "预约时间",
 dataIndex: "getTime"
 },
 ];
-const data = [
-{
-key: "1",
-name: "John Brown",
-age: 32,
-address: "New York No. 1 Lake Park"
-},
-{
-key: "2",
-name: "Jim Green",
-age: 42,
-address: "London No. 1 Lake Park"
-},
-{
-key: "3",
-name: "Joe Black",
-age: 32,
-address: "Sidney No. 1 Lake Park"
-}
-];
+const data = [];
 
 export default {
 data() {
 return {
-data,
+   data: this.$store.getters.getMsg,
 columns
 };
 }
