@@ -1,7 +1,7 @@
 <template>
-  <div class="parcelStorage">
+  <div>
     <div>
-      <h2>包裹入库</h2>
+      <h2>预约取件</h2>
     </div>
     <div>
       <a-form :form="form" @submit="handleSubmit">
@@ -13,33 +13,23 @@
         ]"
           />
         </a-form-item>
-        <a-form-item label="收件人" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+        <a-form-item label="取件时间" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
           <a-input
             v-decorator="[
-          'receiver',
-          {rules: [{ required: true, message: '请输入收件人!' }]}
-        ]"
-          />
-        </a-form-item>
-        <a-form-item label="电话" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-          <a-input
-            v-decorator="[
-          'phone',
-          {rules: [{ required: true, message: '请输入电话!' }]}
-        ]"
-          />
-        </a-form-item>
-        <a-form-item label="重量" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-          <a-input
-            v-decorator="[
-          'weight',
-          {rules: [{ required: true, message: '请输入重量!' }]}
+          'getTime',
+          {rules: [{ required: true, message: '请输入取件时间!' }]}
         ]"
           />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-          <a-button type="primary" html-type="submit">提交</a-button>
+          <div>
+            <a-button type="primary" html-type="submit">预约</a-button>&ensp;&ensp;
+            <a-button type="primary" html-type="cancel" @click="handleCancel">取消</a-button>
+          </div>
         </a-form-item>
+        <!-- <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+          <a-button type="primary" html-type="cancel">取消</a-button>
+        </a-form-item>-->
       </a-form>
     </div>
   </div>
@@ -59,8 +49,16 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-            this.$store.dispatch("add",values)
+          this.$store.dispatch("add", values);
           console.log("Received values of form: ", values);
+        }
+      });
+    },
+    handleCancel(e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          this.form.resetFields();
         }
       });
     }

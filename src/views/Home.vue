@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <parcelStorage/>
+    <Reservation/>
   </div>
 </template>
 
@@ -11,7 +12,8 @@ import parcelStorage from '../components/parcelStorage.vue'
 export default {
   name: 'home',
   components: {
-    parcelStorage
+    parcelStorage,
+    Reservation
   }
 }
 </script>
